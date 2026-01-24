@@ -6,7 +6,7 @@ const scrape = async (url) => {
     input: [{ url: url, country: "", transcription_language: "" }],
   });
 
-  fetch(
+  const info = await fetch(
     `${trigger}?dataset_id=gd_lk56epmy2i5g7lzu0k&endpoint=${process.env.ENDPOINT_URL}&notify=false&format=json&uncompressed_webhook=true&force_deliver=false&include_errors=true`,
     {
       method: "POST",
@@ -16,10 +16,9 @@ const scrape = async (url) => {
       },
       body: data,
     },
-  )
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error("Error:", error));
+  );
+  const response = await info.json();
+  console.log("SCRAPE RESPONSE:", response);
 };
 
 scrape("https://www.youtube.com/watch?v=j2lGFm1i91s");
