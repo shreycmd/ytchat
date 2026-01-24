@@ -40,7 +40,7 @@ app.post("/user_query", async (req, res) => {
 });
 app.post("/webhook", (req, res) => {
   console.log("something came in webhook");
-  console.log("Webhook received data:");
+  console.log("Webhook received data:", req.body);
   return res.status(200).send("Webhook received");
 });
 app.get("/", (req, res) => {
