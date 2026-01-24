@@ -2,7 +2,8 @@ import { ChatOpenAI } from "@langchain/openai";
 import { createAgent, tool } from "langchain";
 import data from "./data.js";
 import { z } from "zod";
-
+import dotenv from "dotenv";
+dotenv.config();
 // import { MemoryVectorStore } from "@langchain/core/vectorstores/memory";
 
 import { MemorySaver } from "@langchain/langgraph";

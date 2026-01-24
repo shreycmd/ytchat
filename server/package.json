@@ -19,6 +19,7 @@
     "@langchain/textsplitters": "^1.0.1",
     "@types/express": "^5.0.6",
     "cors": "^2.8.6",
+    "dot-env": "^0.0.1",
     "express": "^5.2.1",
     "langchain": "^1.2.11",
     "zod": "^4.3.5"

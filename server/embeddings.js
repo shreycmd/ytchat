@@ -3,6 +3,8 @@ import { QdrantVectorStore } from "@langchain/qdrant";
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { Document } from "@langchain/core/documents";
+import dotenv from "dotenv";
+dotenv.config();
 const embeddings = new GoogleGenerativeAIEmbeddings({
   apiKey: process.env.GOOGLE_API_KEY,
   model: "text-embedding-004",
