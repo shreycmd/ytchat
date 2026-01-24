@@ -4,7 +4,8 @@ import { agent } from "./agent.js";
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
+
 app.use(cors());
 const PORT = process.env.PORT || 3000;
 app.post("/user_query", async (req, res) => {
@@ -39,7 +40,7 @@ app.post("/user_query", async (req, res) => {
 });
 app.post("/webhook", (req, res) => {
   console.log("something came in webhook");
-  console.log("Webhook received data:", req.body);
+  console.log("Webhook received data:");
   return res.status(200).send("Webhook received");
 });
 app.get("/", (req, res) => {
