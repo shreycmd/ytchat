@@ -7,7 +7,14 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 app.post("/user_query", async (req, res) => {
   const { query, video_id, thread_id } = req.body;
-  console.log("Received query:", query, "for video ID:", video_id);
+  console.log(
+    "Received query:",
+    query,
+    "for video ID:",
+    video_id,
+    "for thread ID:",
+    thread_id,
+  );
 
   const res1 = await agent.invoke(
     {
@@ -25,7 +32,7 @@ app.post("/user_query", async (req, res) => {
 
   const lastMessage = res1.messages[res1.messages.length - 1];
   console.log("--------------ai message:----------\n", lastMessage.content);
-  return res.json(res1.messages.at(-1));
+  return res.json(res1.messages.at(-1).content);
   // await addVideo(v1);
 });
 app.get("/", (req, res) => {

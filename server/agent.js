@@ -54,7 +54,7 @@ const retrievalTool = tool(
   {
     name: "retrievalTool",
     description:
-      "useful for when you need to answer questions about youtube videos transcripts get the most relevant chunks from our db store and user specifically mention about tell me something about video ",
+      "this tool let you retrive information from the video transcript",
     schema: z.object({
       query: z.string(),
     }),
@@ -67,7 +67,6 @@ export const agent = createAgent({
   tools: [retrievalTool],
   checkpointer: memory,
 });
-await addVideo(v1);
 
 // const res1 = await agent.invoke(
 //   {
