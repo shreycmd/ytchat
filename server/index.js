@@ -37,6 +37,10 @@ app.post("/user_query", async (req, res) => {
   return res.json(res1.messages.at(-1).content);
   // await addVideo(v1);
 });
+app.post("/webhook", (req, res) => {
+  console.log("Webhook received data:", req.body);
+  res.status(200).send("Webhook received");
+});
 app.get("/", (req, res) => {
   console.log("rag be");
   return res.send("Hello from RAG server!");
