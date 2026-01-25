@@ -1,17 +1,17 @@
 import dotenv from "dotenv";
 dotenv.config();
 const trigger = "https://api.brightdata.com/datasets/v3/trigger";
-const scrape = async (url) => {
+export const scrape = async (url) => {
   const data = JSON.stringify({
     input: [{ url: url, country: "", transcription_language: "" }],
   });
-
+  console.log("SCRAPE REQUEST DATA:", data);
   const info = await fetch(
     `${trigger}?dataset_id=gd_lk56epmy2i5g7lzu0k&endpoint=${process.env.ENDPOINT_URL}&notify=false&format=json&uncompressed_webhook=true&force_deliver=false&include_errors=true`,
     {
       method: "POST",
       headers: {
-        Authorization: "Bearer 256a68de-78a2-4c75-ac34-82dd4fee24e5",
+        Authorization: `Bearer ${process.env.SCRAPER_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: data,
@@ -19,6 +19,7 @@ const scrape = async (url) => {
   );
   const response = await info.json();
   console.log("SCRAPE RESPONSE:", response);
+  return response.snapshot_id;
 };
 
-scrape("https://www.youtube.com/watch?v=j2lGFm1i91s");
+// scrape("https://www.youtube.com/watch?v=j2lGFm1i91s");
