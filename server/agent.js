@@ -106,20 +106,20 @@ export const agent = createAgent({
   checkpointer: memory,
 });
 
-const res1 = await agent.invoke(
-  {
-    messages: [
-      {
-        role: "user",
-        content: "what all things could you do?",
-      },
-    ],
-  },
-  {
-    configurable: { thread_id: "55" },
-  },
-);
+// const res1 = await agent.invoke(
+//   {
+//     messages: [
+//       {
+//         role: "user",
+//         content: "what all things could you do?",
+//       },
+//     ],
+//   },
+//   {
+//     configurable: { thread_id: "55" },
+//   },
+// );
 
-const lastMessage = res1.messages[res1.messages.length - 1];
-console.log("--------------ai message:----------\n", lastMessage.content);
+// const lastMessage = res1.messages[res1.messages.length - 1];
+// console.log("--------------ai message:----------\n", lastMessage.content);
 // await addVideo(v1);
