@@ -86,19 +86,19 @@ export const agent = createAgent({
   checkpointer: memory,
 });
 
-const res1 = await agent.invoke(
-  {
-    messages: [
-      {
-        role: "user",
-        content:
-          "scrape this yt  url https://www.youtube.com/watch?v=j2lGFm1i91s",
-      },
-    ],
-  },
-  { configurable: { thread_id: "23", video_id: 5 } },
-);
+// const res1 = await agent.invoke(
+//   {
+//     messages: [
+//       {
+//         role: "user",
+//         content:
+//           "scrape this yt  url https://www.youtube.com/watch?v=j2lGFm1i91s",
+//       },
+//     ],
+//   },
+//   { configurable: { thread_id: "23", video_id: 5 } },
+// );
 
-const lastMessage = res1.messages[res1.messages.length - 1];
-console.log("--------------ai message:----------\n", lastMessage.content);
+// const lastMessage = res1.messages[res1.messages.length - 1];
+// console.log("--------------ai message:----------\n", lastMessage.content);
 // await addVideo(v1);
