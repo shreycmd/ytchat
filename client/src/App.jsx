@@ -46,7 +46,8 @@ function App() {
         throw new Error("Failed to fetch response");
       }
 
-      const aiContent = await response.text();
+      const aiContent = await response.json();
+      console.log("AI Response:", aiContent);
 
       const aiMessage = {
         id: Date.now() + 1,
