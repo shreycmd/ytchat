@@ -64,7 +64,7 @@ const retrievalTool = tool(
 
     const docs = await vectorStore.similaritySearch(query, 5, filter);
 
-    console.log("DOC COUNT:", docs);
+    console.log("DOC COUNT:", docs.length);
 
     if (!docs.length) {
       return "No relevant transcript found for this video.";
@@ -77,7 +77,11 @@ const retrievalTool = tool(
     description: `this tool let you retrive information about the user query regarding youtube video whose transctipt is stored in the vector store.
       use this tool to answer user queries about a video.
       always use this tool before answering a user query if the vector store does not have any thing about the video 
-      call the scarper tool to add it in the store and tell user that video is being processed and will be available soon.`,
+      call the scarper tool to add it in the store and tell user that video is being processed and will be available soon.
+      example :
+      user query : what is the video about https://www.youtube.com/watch?v=j2lGFm1i91s?
+      user query : tell me about the video with id or snap shot id eur8dUO9mvE
+      some thing regrding the video after your reply of the video is being processed  most likely the next question of user would be about the video only.`,
     schema: z.object({
       query: z.string(),
       video_id: z.string(),
