@@ -41,7 +41,7 @@ const scrapeTool = tool(
   {
     name: "scrapeTool",
     description:
-      "this tool will scrape the youtube video transcript given the video url.the tool starts a craping job that usually takes 7 seconds use the tool only if the video is not in the vevotr store already the tool will reuturn the snapshot/jobid which canbe uses to check the status of the scraping job",
+      "this tool will scrape the youtube video transcript given the video url. use the tool only if the video is not present in the vector store the tool will reuturn the ",
     schema: z.object({
       url: z.string(),
     }),
@@ -75,7 +75,7 @@ const retrievalTool = tool(
   {
     name: "retrievalTool",
     description:
-      "this tool let you retrive information from the video transcript",
+      "this tool let you retrive information about the user query whose transctipt is stored in the vector store. use this tool to answer user queries about a video. always use this tool before answering a user query.",
     schema: z.object({
       query: z.string(),
       video_id: z.string(),
