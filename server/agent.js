@@ -47,7 +47,7 @@ const scrapeTool = tool(
   },
 );
 const retrievalTool = tool(
-  async ({ query }, { configurable: { video_id } }) => {
+  async ({ query, video_id }, { configurable: {} }) => {
     console.log("VIDEO ID:", video_id);
 
     const filter = {
@@ -75,6 +75,7 @@ const retrievalTool = tool(
       "this tool let you retrive information from the video transcript",
     schema: z.object({
       query: z.string(),
+      video_id: z.string(),
     }),
   },
 );

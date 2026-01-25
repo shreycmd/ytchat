@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { agent } from "./agent.js";
 import dotenv from "dotenv";
+import { addVideo } from "./embeddings.js";
 dotenv.config();
 const app = express();
 app.use(express.json({ limit: "5mb" }));
@@ -38,9 +39,10 @@ app.post("/user_query", async (req, res) => {
   return res.json(res1.messages.at(-1).content);
   // await addVideo(v1);
 });
-app.post("/webhook", (req, res) => {
+app.post("/webhook", async (req, res) => {
   console.log("something came in webhook");
   console.log("Webhook received data:", req.body);
+  await Promise.all(req.body.map((item) => addVideo(item)));
   return res.status(200).send("Webhook received");
 });
 app.get("/", (req, res) => {
