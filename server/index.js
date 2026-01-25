@@ -21,7 +21,12 @@ app.post("/user_query", async (req, res) => {
 
   const res1 = await agent.invoke(
     {
-      input: query,
+      messages: [
+        {
+          role: "user",
+          content: query,
+        },
+      ],
     },
     {
       configurable: { thread_id },

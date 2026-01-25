@@ -90,15 +90,15 @@ const retrievalTool = tool(
     }),
   },
 );
+
+const memory = new MemorySaver();
 const systemPrompt = ChatPromptTemplate.fromMessages([
   [
     "system",
     "You are an yt chat bot assistant to whom user provide a url and you scrape the video and with that data answer there query. Never add the same document twice. If content already exists,always check the vector store first before scraping. If content is not found in vector store, use the scrape tool to get the content first and then use retrieval tool to get the relevant information to answer user query. Always use the tools when needed. If video is being processed inform the user that video is being processed and will be available soon. always check the store first with retrival tool before coming to conclusion Keep your answers concise and to the point.",
   ],
-  ["user", "{input}"],
+  ["user", "{messages}"],
 ]);
-
-const memory = new MemorySaver();
 export const agent = createAgent({
   model: llm,
   prompt: systemPrompt,
@@ -106,19 +106,20 @@ export const agent = createAgent({
   checkpointer: memory,
 });
 
-// const res1 = await agent.invoke(
-//   {
-//     messages: [
-//       {
-//         role: "user",
-//         content:
-//           "scrape this yt  url https://www.youtube.com/watch?v=j2lGFm1i91s",
-//       },
-//     ],
-//   },
-//   { configurable: { thread_id: "23", video_id: 5 } },
-// );
+const res1 = await agent.invoke(
+  {
+    messages: [
+      {
+        role: "user",
+        content: "what all things could you do?",
+      },
+    ],
+  },
+  {
+    configurable: { thread_id: "55" },
+  },
+);
 
-// const lastMessage = res1.messages[res1.messages.length - 1];
-// console.log("--------------ai message:----------\n", lastMessage.content);
+const lastMessage = res1.messages[res1.messages.length - 1];
+console.log("--------------ai message:----------\n", lastMessage.content);
 // await addVideo(v1);
