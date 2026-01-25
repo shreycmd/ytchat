@@ -33,8 +33,8 @@ export const addVideo = async (vdata) => {
   ];
   //splitting in chunks
   const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: 1000,
-    chunkOverlap: 200,
+    chunkSize: 500,
+    chunkOverlap: 150,
   });
   const chunks = await splitter.splitDocuments(documents);
   await vectorStore.addDocuments(chunks);
