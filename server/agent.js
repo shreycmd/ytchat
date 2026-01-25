@@ -74,8 +74,10 @@ const retrievalTool = tool(
   },
   {
     name: "retrievalTool",
-    description:
-      "this tool let you retrive information about the user query whose transctipt is stored in the vector store. use this tool to answer user queries about a video. always use this tool before answering a user query.",
+    description: `this tool let you retrive information about the user query whose transctipt is stored in the vector store.
+      use this tool to answer user queries about a video.
+      always use this tool before answering a user query if the vector store does not have any thing about the video 
+      call the scarper tool to add it in the store and tell user that video is being processed and will be available soon.`,
     schema: z.object({
       query: z.string(),
       video_id: z.string(),
