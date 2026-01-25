@@ -78,6 +78,7 @@ const retrievalTool = tool(
       use this tool to answer user queries about a video.
       always use this tool before answering a user query if the vector store does not have any thing about the video 
       call the scarper tool to add it in the store and tell user that video is being processed and will be available soon.
+      and then use this tool to answer user query once the video is added to the vector store.
       example :
       user query : what is the video about https://www.youtube.com/watch?v=j2lGFm1i91s?
       user query : tell me about the video with id or snap shot id eur8dUO9mvE
