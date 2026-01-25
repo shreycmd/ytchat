@@ -2,6 +2,7 @@ import { ChatOpenAI } from "@langchain/openai";
 import { createAgent, tool } from "langchain";
 import data from "./data.js";
 import { url, z } from "zod";
+import { ChatPromptTemplate } from "@langchain/core/prompts";
 import dotenv from "dotenv";
 dotenv.config();
 // import { MemoryVectorStore } from "@langchain/core/vectorstores/memory";
@@ -92,7 +93,7 @@ const retrievalTool = tool(
 const systemPrompt = ChatPromptTemplate.fromMessages([
   [
     "system",
-    "You are an yt chat bot assistant to whom user provide a url and you scrape the video and with that data answer there query. Never add the same document twice. If content already exists,always check the vector store first before scraping. If content is not found in vector store, use the scrape tool to get the content first and then use retrieval tool to get the relevant information to answer user query. Always use the tools when needed. If video is being processed inform the user that video is being processed and will be available soon. Keep your answers concise and to the point.",
+    "You are an yt chat bot assistant to whom user provide a url and you scrape the video and with that data answer there query. Never add the same document twice. If content already exists,always check the vector store first before scraping. If content is not found in vector store, use the scrape tool to get the content first and then use retrieval tool to get the relevant information to answer user query. Always use the tools when needed. If video is being processed inform the user that video is being processed and will be available soon. always check the store first with retrival tool before coming to conclusion Keep your answers concise and to the point.",
   ],
   ["user", "{input}"],
 ]);

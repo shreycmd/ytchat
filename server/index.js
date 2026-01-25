@@ -21,15 +21,10 @@ app.post("/user_query", async (req, res) => {
 
   const res1 = await agent.invoke(
     {
-      messages: [
-        {
-          role: "user",
-          content: query,
-        },
-      ],
+      input: query,
     },
     {
-      configurable: { thread_id: thread_id },
+      configurable: { thread_id },
     },
   );
 
@@ -40,6 +35,7 @@ app.post("/user_query", async (req, res) => {
 });
 app.post("/webhook", async (req, res) => {
   console.log("something came in webhook");
+
   await Promise.all(req.body.map((item) => addVideo(item)));
   return res.status(200).send("Webhook received");
 });
