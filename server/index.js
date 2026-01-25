@@ -10,12 +10,11 @@ app.use(express.json({ limit: "5mb" }));
 app.use(cors());
 const PORT = process.env.PORT || 3000;
 app.post("/user_query", async (req, res) => {
-  const { query, video_id, thread_id } = req.body;
+  const { query, thread_id } = req.body;
   console.log(
     "Received query:",
     query,
-    "for video ID:",
-    video_id,
+
     "for thread ID:",
     thread_id,
   );
@@ -30,7 +29,7 @@ app.post("/user_query", async (req, res) => {
       ],
     },
     {
-      configurable: { thread_id: thread_id, video_id: video_id },
+      configurable: { thread_id: thread_id },
     },
   );
 
