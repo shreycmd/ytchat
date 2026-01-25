@@ -20,6 +20,7 @@ export const vectorStore = await QdrantVectorStore.fromExistingCollection(
   },
 );
 export const addVideo = async (vdata) => {
+  console.log("--------Adding video to vector store:", vdata.video_id);
   const documents = [
     new Document({
       pageContent: vdata.transcript,

@@ -41,7 +41,6 @@ app.post("/user_query", async (req, res) => {
 });
 app.post("/webhook", async (req, res) => {
   console.log("something came in webhook");
-  console.log("Webhook received data:", req.body);
   await Promise.all(req.body.map((item) => addVideo(item)));
   return res.status(200).send("Webhook received");
 });

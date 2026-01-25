@@ -29,9 +29,10 @@ const llm = new ChatOpenAI({
 //retrieval tool
 //testing
 // const v_id = "eur8dUO9mvE";
-const v_id = "j2lGFm1i91s";
+
 const scrapeTool = tool(
   async ({ url }) => {
+    console.log("----------scraper TOOL CALLED----------");
     console.log("Scraping URL:", url);
     const snapshot_id = await scrape(url);
     return snapshot_id;
@@ -48,7 +49,9 @@ const scrapeTool = tool(
 );
 const retrievalTool = tool(
   async ({ query, video_id }, { configurable: {} }) => {
+    console.log("----------RETRIEVAL TOOL CALLED----------");
     console.log("VIDEO ID:", video_id);
+    console.log("QUERY:", query);
 
     const filter = {
       must: [
