@@ -80,19 +80,19 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-      <div className="w-full max-w-[1024px] h-[calc(100vh-2rem)] flex flex-col bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-2 sm:p-4">
+      <div className="w-full max-w-[1024px] h-[calc(100vh-1rem)] sm:h-[calc(100vh-2rem)] flex flex-col bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="bg-gray-800 border-b border-gray-700 px-6 py-4">
-          <h1 className="text-xl font-semibold text-white">AI Chat</h1>
+        <div className="bg-gray-800 border-b border-gray-700 px-4 py-3 sm:px-6 sm:py-4">
+          <h1 className="text-lg sm:text-xl font-semibold text-white">AI Chat</h1>
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 hide-scrollbar">
+        <div className="flex-1 overflow-y-auto px-3 py-3 sm:px-6 sm:py-4 space-y-3 sm:space-y-4 hide-scrollbar">
           {messages.length === 0 && (
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
-                <div className="relative w-24 h-24 mx-auto mb-4">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4">
                   {/* YouTube Play Button */}
                   <svg
                     className="absolute inset-0 w-full h-full"
@@ -133,10 +133,10 @@ function App() {
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 </div>
-                <p className="text-gray-400 text-lg font-medium">
+                <p className="text-gray-400 text-base sm:text-lg font-medium">
                   Chat with YouTube AI
                 </p>
-                <p className="text-gray-500 text-sm mt-2">
+                <p className="text-gray-500 text-xs sm:text-sm mt-2">
                   Ask questions about video content
                 </p>
               </div>
@@ -149,9 +149,9 @@ function App() {
               className={`flex items-end gap-2 ${message.role === "user" ? "justify-end" : "justify-start"}`}
             >
               {message.role === "assistant" && (
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-600 flex items-center justify-center">
                   <svg
-                    className="w-5 h-5 text-gray-200"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -166,7 +166,7 @@ function App() {
                 </div>
               )}
               <div
-                className={`max-w-[80%] rounded-lg px-4 py-3 ${
+                className={`max-w-[75%] sm:max-w-[80%] rounded-lg px-3 py-2 sm:px-4 sm:py-3 ${
                   message.role === "user"
                     ? "bg-blue-600 text-white"
                     : message.error
@@ -174,14 +174,14 @@ function App() {
                       : "bg-gray-700 text-gray-100"
                 }`}
               >
-                <p className="whitespace-pre-wrap break-words">
+                <p className="whitespace-pre-wrap break-words text-sm sm:text-base">
                   {message.content}
                 </p>
               </div>
               {message.role === "user" && (
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-500 flex items-center justify-center">
                   <svg
-                    className="w-5 h-5 text-white"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -200,9 +200,9 @@ function App() {
 
           {loading && (
             <div className="flex items-end gap-2 justify-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+              <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-600 flex items-center justify-center">
                 <svg
-                  className="w-5 h-5 text-gray-200"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -215,7 +215,7 @@ function App() {
                   />
                 </svg>
               </div>
-              <div className="bg-gray-700 rounded-lg px-4 py-3">
+              <div className="bg-gray-700 rounded-lg px-3 py-2 sm:px-4 sm:py-3">
                 <div className="flex space-x-2">
                   <div
                     className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
@@ -238,8 +238,8 @@ function App() {
         </div>
 
         {/* Input Area */}
-        <div className="border-t border-gray-700 p-4 bg-gray-800">
-          <div className="flex gap-3">
+        <div className="border-t border-gray-700 p-3 sm:p-4 bg-gray-800">
+          <div className="flex gap-2 sm:gap-3">
             <div className="flex-1 relative">
               <textarea
                 value={input}
@@ -253,9 +253,9 @@ function App() {
                 placeholder="Type your message..."
                 disabled={loading}
                 rows={1}
-                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-700 text-white rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                 style={{
-                  minHeight: "48px",
+                  minHeight: "44px",
                   maxHeight: "120px",
                 }}
               />
@@ -263,11 +263,11 @@ function App() {
             <button
               onClick={sendMessage}
               disabled={!input.trim() || loading}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center min-w-[100px]"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center min-w-[80px] sm:min-w-[100px]"
             >
               {loading ? (
                 <svg
-                  className="w-5 h-5 animate-spin"
+                  className="w-4 h-4 sm:w-5 sm:h-5 animate-spin"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -287,7 +287,7 @@ function App() {
                 </svg>
               ) : (
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
