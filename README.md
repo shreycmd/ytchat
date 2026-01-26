@@ -1,4 +1,4 @@
-# 🎬 YouTube RAG Chatbot (React + Express + Bright Data + Drant DB)
+# 🎬 YouTube RAG Chatbot (React + Express + Bright Data + QDrant DB)
 
 ![Architecture](https://img.shields.io/badge/Architecture-RAG-blue)
 ![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Express%20%7C%20BrightData%20%7C%20DrantDB-orange)
