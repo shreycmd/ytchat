@@ -10,10 +10,38 @@ function App() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  useEffect(() => {
+    const init = async () => {
+      const es = await early_start();
+      console.log(es);
+    };
+
+    init();
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const early_start = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+      const response = await fetch(`${apiUrl}/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch response");
+      }
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
 
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
@@ -84,7 +112,9 @@ function App() {
       <div className="w-full max-w-[1024px] h-[calc(100vh-1rem)] sm:h-[calc(100vh-2rem)] flex flex-col bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-gray-800 border-b border-gray-700 px-4 py-3 sm:px-6 sm:py-4">
-          <h1 className="text-lg sm:text-xl font-semibold text-white">AI Chat</h1>
+          <h1 className="text-lg sm:text-xl font-semibold text-white">
+            AI Chat
+          </h1>
         </div>
 
         {/* Messages Area */}
