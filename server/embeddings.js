@@ -12,13 +12,36 @@ const embeddings = new GoogleGenerativeAIEmbeddings({
 });
 //embedding
 
+const client = new QdrantClient({
+  url: process.env.QDRANT_URL,
+  apiKey: process.env.QDRANT_API_KEY,
+  checkCompatibility: false,
+});
+
+const collectionName = "ytrag";
+
+// Ensure collection exists
+const collections = await client.getCollections();
+const exists = collections.collections.some((c) => c.name === collectionName);
+if (!exists) {
+  await client.createCollection(collectionName, {
+    vectors: {
+      size: 3072,
+      distance: "Cosine",
+    },
+  });
+  await client.createPayloadIndex(collectionName, {
+    field_name: "metadata.video_id",
+    field_schema: "keyword",
+  });
+}
+
 //export const vectorStore = new MemoryVectorStore(embeddings);
 export const vectorStore = await QdrantVectorStore.fromExistingCollection(
   embeddings,
   {
-    url: process.env.QDRANT_URL,
-    collectionName: "ytrag",
-    checkCompatibility: false
+    client,
+    collectionName,
   },
 );
 export const addVideo = async (vdata) => {

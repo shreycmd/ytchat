@@ -16,7 +16,7 @@ const v2 = data[1];
 // await addVideo(v2);
 // console.log("Chunks:", chunks);
 const llm = new ChatOpenAI({
-  model: "qwen/qwen3.6-27b",
+  model: "llama-3.3-70b-versatile",
   apiKey: process.env.QWEN_API_KEY,
   temperature: 0,
   configuration: {
