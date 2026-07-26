@@ -52,7 +52,7 @@ This project is a **YouTube Retrieval-Augmented Generation (RAG)** chatbot that 
 
 ### ✅ Embedding Model
 - Uses:
-  - `gemini-text-004` (or any embedding model)
+  - `gemini-text-001` (or any embedding model)
 - Converts each chunk into vector embeddings
 
 ---
