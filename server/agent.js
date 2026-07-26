@@ -16,7 +16,7 @@ const v2 = data[1];
 // await addVideo(v2);
 // console.log("Chunks:", chunks);
 const llm = new ChatOpenAI({
-  model: "qwen/qwen3-32b",
+  model: "qwen/qwen3.6-27b",
   apiKey: process.env.QWEN_API_KEY,
   temperature: 0,
   configuration: {
@@ -49,7 +49,7 @@ const scrapeTool = tool(
   },
 );
 const retrievalTool = tool(
-  async ({ query, video_id }, { configurable: {} }) => {
+  async ({ query, video_id }, { configurable: { } }) => {
     console.log("----------RETRIEVAL TOOL CALLED----------");
     console.log("VIDEO ID:", video_id);
     console.log("QUERY:", query);

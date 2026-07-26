@@ -3,11 +3,12 @@ import { QdrantVectorStore } from "@langchain/qdrant";
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { Document } from "@langchain/core/documents";
+import { QdrantClient } from "@qdrant/js-client-rest";
 import dotenv from "dotenv";
 dotenv.config();
 const embeddings = new GoogleGenerativeAIEmbeddings({
   apiKey: process.env.GOOGLE_API_KEY,
-  model: "text-embedding-004",
+  model: "gemini-embedding-001",
 });
 //embedding
 
@@ -17,10 +18,11 @@ export const vectorStore = await QdrantVectorStore.fromExistingCollection(
   {
     url: process.env.QDRANT_URL,
     collectionName: "ytrag",
+    checkCompatibility: false
   },
 );
 export const addVideo = async (vdata) => {
-  console.log("--------Adding video to vector store:", vdata.video_id);
+  console.log("Adding video to vector store:", vdata.video_id);
   const documents = [
     new Document({
       pageContent: vdata.transcript,

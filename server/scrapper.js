@@ -7,7 +7,7 @@ export const scrape = async (url) => {
   });
   console.log("SCRAPE REQUEST DATA:", data);
   const info = await fetch(
-    `${trigger}?dataset_id=gd_lk56epmy2i5g7lzu0k&endpoint=${process.env.ENDPOINT_URL}&notify=false&format=json&uncompressed_webhook=true&force_deliver=false&include_errors=true`,
+    `${trigger}?dataset_id=gd_lk56epmy2i5g7lzu0k&endpoint=${encodeURIComponent(process.env.ENDPOINT_URL)}&notify=false&format=json&uncompressed_webhook=true&force_deliver=false&include_errors=true`,
     {
       method: "POST",
       headers: {
